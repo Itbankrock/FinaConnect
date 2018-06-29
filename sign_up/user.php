@@ -16,69 +16,75 @@
 <body>
 <div class="container">
     <div class="row">
-        <form class="col s12" id="reg-form">
+
+        <form class="col s12" action="../Login.php" id="reg-form" method="post">
             <h3>Client Registration
                 <i class="fa fa-address-card prefix" style="font-size:50px"></i></h3>
             <center> <small><disabled style="color: darkgray">your first step to finding the best advisor</disabled></small></center>
             <div class="row">
                 <div class="input-field col s4">
-                    <input id="first_name" type="text" class="validate" required>
+                    <input id="first_name" type="text" class="validate" required value="<?php if(isset($_POST['first_name'])) echo $_POST['first_name'];?>" name="first_name" >
                     <label for="first_name">First Name</label>
                 </div>
                 <div class="input-field col s4">
-                    <input id="middle_name" type="text" class="validate" required>
+                    <input id="middle_name" type="text" class="validate" required value="<?php if(isset($_POST['middle_name'])) echo $_POST['middle_name'];?>" name="middle_name" >
                     <label for="middle_name">Middle Name</label>
                 </div>
 
                 <div class="input-field col s4">
-                    <input id="last_name" type="text" class="validate" required>
+                    <input id="last_name" type="text" class="validate" required  value="<?php if(isset($_POST['last_name'])) echo $_POST['last_name'];?>" name="last_name">
                     <label for="last_name">Last Name</label>
                 </div>
 
                 <div class="input-field col s2">
-                    <input id="bldg" type="text" class="validate" required>
+                    <input id="bldg" type="text" class="validate" required  value="<?php if(isset($_POST['bldg'])) echo $_POST['bldg'];?>" name="bldg">
                     <label for="bldg">Bldg. #</label>
                 </div>
 
                 <div class="input-field col s4">
-                    <input id="street" type="text" class="validate" required>
+                    <input id="street" type="text" class="validate" required value="<?php if(isset($_POST['street'])) echo $_POST['street'];?>" name="street">
                     <label for="street">Street</label>
                 </div>
                 <div class="input-field col s3">
-                    <input id="city" type="text" class="validate" required>
+                    <input id="city" type="text" class="validate" required value="<?php if(isset($_POST['city'])) echo $_POST['city'];?>" name="city">
                     <label for="city">City</label>
                 </div>
                 <div class="input-field col s3">
-                    <input id="region" type="text" class="validate" required>
+                    <input id="region" type="text" class="validate" required value="<?php if(isset($_POST['region'])) echo $_POST['region'];?>" name="region">
                     <label for="region">Region</label>
                 </div>
                 <div class="input-field col s6">
 
-                    <input id="contact" type="text" class="validate" required>
+                    <input id="contact" type="text" class="validate" required value="<?php if(isset($_POST['contact'])) echo $_POST['contact'];?>" name="contact">
                     <label for="contact">Contact Number</label>
                 </div>
 
+                
+
+            </div>
+            <br>
+            <div class="row">
                 <div class="input-field col s6">
 
-                    <input id="email" type="email" class="validate" required>
+                    <input id="email" type="email" class="validate" required value="<?php if(isset($_POST['email'])) echo $_POST['email'];?>" name="email">
                     <label for="email">Email</label>
             </div>
 
-
             </div>
+
             <div class="row">
-                <div class="input-field col s12">
-                    <input id="password" type="password" class="validate" minlength="6" required>
+                <div class="input-field col s6">
+                    <input id="password" type="password" class="validate" minlength="6" required value="<?php if(isset($_POST['password'])) echo $_POST['password'];?>" name="password">
                     <label for="password">Password</label>
                 </div>
-                <div class="input-field col s12">
+                <div class="input-field col s6">
                     <input id="c_password" type="password" class="validate" minlength="6" required>
                     <label for="c_password">Confirm Password</label>
                 </div>
             </div>
                 <div class="input-field col s12">
                     <center>
-                    <button class="btn btn-large btn-register waves-effect waves-light" type="submit" name="action">Register
+                    <button class="btn btn-large btn-register waves-effect waves-light" type="submit" name="submit">Register
                     </button>
                     </center>
                 </div>
