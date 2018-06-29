@@ -3,6 +3,10 @@
 
 <head>
   <meta charset="utf-8">
+  
+  <script src="https://materializecss.com/extras/noUiSlider/nouislider.js"></script>
+  <link rel="stylesheet" href="https://materializecss.com/extras/noUiSlider/nouislider.css">
+  
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
    <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
@@ -33,6 +37,8 @@ height:100%;
 text-shadow: 2px 2px black;
 }
 
+
+
 </style>
 </head>
 <body>
@@ -46,8 +52,8 @@ text-shadow: 2px 2px black;
 	  <li><a href="#!">Logout</a></li>
 	</ul>
 	<nav>
-	  <div class="nav-wrapper">
-		<a href="#!" class="brand-logo bannerimg"><img class="bannerimg" src="../assets/logo.png" /></a>
+	  <div class="nav-wrapper" style="background-color:#26a69a;">
+		<a href="#!" class="brand-logo bannerimg"><img class="bannerimg" src="../assets/logomod.png" /></a>
 		 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 		<ul class="right hide-on-med-and-down">
 		<li><a href="#">View Adviser</a></li>
@@ -157,7 +163,44 @@ text-shadow: 2px 2px black;
   <div id="modal1" class="modal">
     <div class="modal-content">
       <h4>Modal Header</h4>
-      <p>A bunch of text</p>
+      
+	  <form class="col s12">
+      <div class="row">
+		<div class="input-field col s12">
+			<select multiple>
+			  <option value="" disabled selected>Choose your option</option>
+			  <option value="1">Option 1</option>
+			  <option value="2">Option 2</option>
+			  <option value="3">Option 3</option>
+			</select>
+			<label>Materialize Multiple Select</label>
+		  </div>
+	  
+        <div class="input-field col s12">
+          <text class="black-text prefix">₱</text>
+          <input id="minprice" type="number" class="validate">
+          <label for="minprice">Minimum Price</label>
+        </div>
+        <div class="input-field col s12">
+          <i class="material-icons prefix">info</i>
+          <input id="desc" type="tel" class="validate">
+          <label for="desc">Description</label>
+        </div>
+		
+		<div class="input-field col s12">
+			
+			<i class="material-icons prefix">date_range</i>
+			<label for="test-slider">Duration of the Bill</label>
+			<div id="test-slider"></div>
+          
+        </div>
+		
+        
+		
+      </div>
+    </form>
+	  
+	  
     </div>
     <div class="modal-footer">
       <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
@@ -175,6 +218,23 @@ $( document ).ready(function() {
 	$(".dropdown-trigger").dropdown();
 	$('.sidenav').sidenav();
 	$('.modal').modal();
+	$('select').formSelect();
+	
+	var slider = document.getElementById('test-slider');
+	  noUiSlider.create(slider, {
+	   start: [1, 7],
+	   connect: true,
+	   step: 1,
+	   orientation: 'horizontal', // 'horizontal' or 'vertical'
+	   range: {
+		 'min': 1,
+		 'max': 7
+	   },
+	   format: wNumb({
+		 decimals: 0
+	   })
+	  });
+	
 });
 
 </script>
