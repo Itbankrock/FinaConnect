@@ -166,7 +166,8 @@ font-weight: 300;
 						<a href="sign_up/user.php"><button class="btn waves-effect waves-light col s12" type="submit" name="action">CLIENT</button></a>
 					</div>
 					<div class="col s12 center">
-						<button class="btn waves-effect waves-light col s12" type="submit" name="action">ADVISOR</button>
+
+                        <a href="sign_up/fa.php"><button class="btn waves-effect waves-light col s12" type="submit" name="action">ADVISOR</button></a>
 					</div>
 			  </div>
 				
