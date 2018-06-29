@@ -60,8 +60,7 @@
 
                 <div class="input-field col s6">
                     <select name ="memType">
-                        <option value="" disabled selected>Choose your option</option>
-                        <option value="Regular">Regular </option>
+                        <option value="Regular" selected="">Regular </option>
                         <option value="Associate">Associate </option>
                         <option value="Certified">Certified </option>
                     </select>
