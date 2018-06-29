@@ -2,7 +2,21 @@
 <html>
 <?php 
 	require_once('connectPDO.php');
-	if(isset($_POST['submit'])){
+    if (isset($_POST['login_user'])){
+        $username= $_POST['login_username'];
+        $password= $_POST['login_password'];
+        
+        $checkExist = $db->prepare("SELECT fName, lName from client WHERE email = :username AND password = :password");
+        $checkExist->bindParam(":username", $username);
+        $checkExist->bindParam(":password", $password);
+		$checkExist->execute();
+		$rows = $checkExist->fetch(PDO::FETCH_ASSOC);
+		$match = "".$rows['fName']."".$rows['lName']."";
+        if ($rows > 0) {
+            header("Location: client_pages/dashboard.php");
+        }
+    }
+	else if(isset($_POST['submit'])){
 		$fName = $_POST['first_name'];
 		$mName = $_POST['middle_name'];
 		$lName = $_POST['last_name'];
@@ -62,7 +76,7 @@
 		$rows = $selectAddress->fetch(PDO::FETCH_ASSOC);
 		$addressNo = $rows['addressID'];
 
-		$addQuery = $db->prepare("INSERT INTO client (fName, mName, lName, email,password, mobileNo,age, address) VALUES (:firstName, :middleName, :lastName, :username, :password, :contact,20, :address)");
+		$addQuery = $db->prepare("INSERT INTO client (fName, mName, lName, email,password, mobileNo,age, address, isActive) VALUES (:firstName, :middleName, :lastName, :username, :password, :contact,20, :address,0)");
 		$addQuery->bindParam(":firstName", $fName);
 		$addQuery->bindParam(":middleName", $mName);
 		$addQuery->bindParam(":lastName", $lName);
@@ -73,6 +87,7 @@
 		$addQuery->execute();
 
 	}	
+
 
 
 	if(isset($_POST['submit2'])){
@@ -137,7 +152,7 @@
 		$rows = $selectAddress->fetch(PDO::FETCH_ASSOC);
 		$addressNo = $rows['addressID'];
 		
-		$addQuery = $db->prepare("INSERT INTO financialadvisor (fName, mName, lName, email,password, mobileNo,age, address,membershipType) VALUES (:firstName, :middleName, :lastName, :username, :password, :contact,20, :address,:membershipType)");
+		$addQuery = $db->prepare("INSERT INTO financialadvisor (fName, mName, lName, email,password, mobileNo,age, address,membershipType,isActive) VALUES (:firstName, :middleName, :lastName, :username, :password, :contact,20, :address,:membershipType,0)");
 		$addQuery->bindParam(":firstName", $fName);
 		$addQuery->bindParam(":middleName", $mName);
 		$addQuery->bindParam(":lastName", $lName);
@@ -149,7 +164,6 @@
 		$addQuery->execute();
 
 	}	
-
 
 ?>
 <head>
@@ -191,27 +205,27 @@ font-weight: 300;
 				<span class="card-title" style="text-align: center;">LOGIN</span>
 				
 				  <div class="row">
-					<form class="col s12">
+					<form action="" method="POST"  class="col s12">
 					  <div class="row">
 					  
 						<div class="input-field col s12">
 						  <i class="material-icons prefix">account_circle</i>
-						  <input id="icon_uname" type="text" class="validate">
+						  <input id="icon_uname" type="text" class="validate" value="<?php if(isset($_POST['login_username'])) echo $_POST['login_username'];?>" name="login_username">
 						  <label for="icon_uname">Username</label>
 						</div>
 						
 						<div class="input-field col s12">
 						  <i class="material-icons prefix">lock</i>
-						  <input id="icon_password" type="tel" class="validate">
+						  <input id="icon_password" type="password" class="validate" value="" name="login_password">
 						  <label for="icon_password">Password</label>
 						</div>
 						
 						<div class="input-field col s12 center">
-						    <button class="btn waves-effect waves-light col s12" type="submit" name="action">LOGIN</button>
+						    <button class="btn waves-effect waves-light col s12" type="submit" name="login_user">LOGIN</button>
 						</div>
 						
 						<div class="col s12 center">
-						    <button class="btn waves-effect waves-light col s12" type="submit" name="action">LOGIN WITH UBANK ACCOUNT</button>
+						    <button class="btn waves-effect waves-light col s12" type="submit" name="login_ubank">LOGIN WITH UBANK ACCOUNT</button>
 						</div>
 						
 					  </div>
@@ -229,8 +243,8 @@ font-weight: 300;
 						<a href="sign_up/user.php"><button class="btn waves-effect waves-light col s12" type="submit" name="action">CLIENT</button></a>
 					</div>
 					<div class="col s12 center">
-						<a href="sign_up/fa.php"><button class="btn waves-effect waves-light col s12" type="submit" name="action">FINANCIAL ADVISER</button></a>
-                        
+
+                        <a href="sign_up/fa.php"><button class="btn waves-effect waves-light col s12" type="submit" name="action">ADVISOR</button></a>
 					</div>
 			  </div>
 				

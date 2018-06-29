@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html>
+    
+<?php 
+	require_once('../connectPDO.php');
+	if(isset($_POST['login_user'])){
+        $username= $_POST['login_username'];
+        echo $username;
+    }
+?>
 
 <head>
   <meta charset="utf-8">
@@ -40,7 +48,7 @@ text-shadow: 2px 2px black;
 <div>
 	<!-- NAVBAR -->
 	<!-- Dropdown Structure -->
-	<ul id="dropdown1" cgit lass="dropdown-content">
+	<ul id="dropdown1" class="dropdown-content">
 	  <li><a href="#!">Edit Info.</a></li>
 	  <li class="divider"></li>
 	  <li><a href="#!">Logout</a></li>
@@ -70,27 +78,18 @@ text-shadow: 2px 2px black;
 	  <li><a href="#!">Logout</a></li>
   </ul>
 	<!-- NAVBAR END -->
-
-	<div class="row container">
-		<div class="col s12 m12" >
-			<div class="input-field col s4">
-				<i class="material-icons prefix">search</i>
-				<input id="icon_prefix" type="text" class="validate" placeholder="AI ENGINEERS">
-				<label for="icon_prefix">Search</label>
-			</div>
-			<div class="input-field col s4">
-				<select>
-					<option value="" disabled selected>Choose your option</option>
-					<option value="1">Location</option>
-					<option value="2">Financial</option>
-				</select>
-				<label>Options</label>
-			</div>
-			<div class="input-field col s3">
-
-			</div>
+	
+	<div class="row container" style="margin-top:2em;">
+		<div class="col s4 m2">
+			<a data-target="modal1" class="waves-effect waves-light btn-large btn modal-trigger"><i class="material-icons left">cloud</i>POST</a>
 		</div>
-
+	</div>
+	
+	<div class="row container">
+		<div class="col s12 m12">
+			<h3>News Articles</h3>
+			<hr>
+		</div>
 	</div>
 	
 	<div class="row container">
@@ -141,6 +140,10 @@ text-shadow: 2px 2px black;
 		
 		<div class="col s4 m3">
 			<div class="card small">
+				<div class="card-image">
+				  <img src="../assets/article4.jpg">
+				  <span class="card-title articletitle">Humans Will be Irrelevant?</span>
+				</div>
 				<div class="card-content">
 				  <p>Will the rise of Artificial Intelligence make the existence of humans irrelevant?</p>
 				</div>
@@ -175,9 +178,6 @@ text-shadow: 2px 2px black;
 
 
 <script>
-$(document).ready(function(){
-	$('select').formSelect();
-});
 $( document ).ready(function() {
     console.log( "ready!" );
 	$(".dropdown-trigger").dropdown();
