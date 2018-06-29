@@ -62,7 +62,7 @@
 		$rows = $selectAddress->fetch(PDO::FETCH_ASSOC);
 		$addressNo = $rows['addressID'];
 
-		$addQuery = $db->prepare("INSERT INTO client (fName, mName, lName, email,password, mobileNo,age, address) VALUES (:firstName, :middleName, :lastName, :username, :password, :contact,0, :address)");
+		$addQuery = $db->prepare("INSERT INTO client (fName, mName, lName, email,password, mobileNo,age, address) VALUES (:firstName, :middleName, :lastName, :username, :password, :contact,20, :address)");
 		$addQuery->bindParam(":firstName", $fName);
 		$addQuery->bindParam(":middleName", $mName);
 		$addQuery->bindParam(":lastName", $lName);
@@ -76,7 +76,7 @@
 
 
 	if(isset($_POST['submit2'])){
-		echo "WEWWEWE";
+
 		$fName = $_POST['first_name'];
 		$mName = $_POST['middle_name'];
 		$lName = $_POST['last_name'];
@@ -136,7 +136,7 @@
 		$selectAddress->execute();
 		$rows = $selectAddress->fetch(PDO::FETCH_ASSOC);
 		$addressNo = $rows['addressID'];
-
+		
 		$addQuery = $db->prepare("INSERT INTO financialadvisor (fName, mName, lName, email,password, mobileNo,age, address,membershipType) VALUES (:firstName, :middleName, :lastName, :username, :password, :contact,20, :address,:membershipType)");
 		$addQuery->bindParam(":firstName", $fName);
 		$addQuery->bindParam(":middleName", $mName);
