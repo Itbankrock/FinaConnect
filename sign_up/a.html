@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>Stamboom</title>    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="user_css.css">
+
+</head>
+<body>
+<div class="input-field">
+    <input class="autocomplete" id="autocomplete-input" type="search">
+    <label for="autocomplete-input"><i class="material-icons">search</i></label>
+    <i class="material-icons">close</i>
+</div>
+</body>
+</html>
+<script>
+    $(document).ready(function(){
+        $('input.autocomplete').autocomplete({
+            data: {
+                "Apple": null,
+                "Microsoft": null,
+                "Google": 'http://placehold.it/250x250'
+            }
+        });
+    });
+</script>
